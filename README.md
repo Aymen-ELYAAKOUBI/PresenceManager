@@ -52,9 +52,7 @@ L'interface repose sur une structure `LinearLayout` :
 
 ## 📸 Captures d'écran
 
-| Maquette de référence | Résultat obtenu |
-| :---: | :---: |
-| <img src="screenshots/maquette.png" width="250"/> | <img src="screenshots/resultat.png" width="250"/> |
+<img src="screenshots/PresenceManage.png" width="250"/> 
 
 ---
 
@@ -62,4 +60,4 @@ L'interface repose sur une structure `LinearLayout` :
 
 1. **Cloner le dépôt :**
    ```bash
-   git clone [https://github.com/VOTRE_NOM_UTILISATEUR/PresenceManager.git](https://github.com/VOTRE_NOM_UTILISATEUR/PresenceManager.git)
+   git clone [https://github.com/Aymen5285356/PresenceManager.git](https://github.com/Aymen5285356/PresenceManager.git)
