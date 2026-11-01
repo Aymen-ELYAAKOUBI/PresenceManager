@@ -52,8 +52,10 @@ L'interface repose sur une structure `LinearLayout` :
 
 ## 📸 Captures d'écran
 
-**Résultat obtenu :**
-![Résultat](screenshots/resultat.png)
+<p align="center">
+  <img src="resultat.png" width="300" alt="Résultat obtenu">
+</p>
+
 ---
 
 ## ⚙️ Installation
