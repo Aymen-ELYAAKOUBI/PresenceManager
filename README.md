@@ -52,8 +52,8 @@ L'interface repose sur une structure `LinearLayout` :
 
 ## 📸 Captures d'écran
 
-![Surface de Presence Manager(Presence Manager)](Presence Manager.png)
-
+**Résultat obtenu :**
+![Résultat](screenshots/resultat.png)
 ---
 
 ## ⚙️ Installation
