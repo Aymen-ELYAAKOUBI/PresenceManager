@@ -100,8 +100,9 @@ Le tableau de bord (`DashboardActivity`) représente l'interface principale acce
 - **Pied de page :** `#94A3B8`, centré, `12sp`, marge basse `24dp`
 
 ### Capture d'écran (TP02)
+
 <p align="center">
-  <img src="screenshots/dashboard.png" width="280" alt="Capture TP02 - Tableau de bord">
+  <img src="dashboard.png" width="280" alt="Capture TP02 - dashboard">
 </p>
 
 ---
