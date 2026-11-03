@@ -137,7 +137,7 @@ PresenceManager/
 
 1. **Cloner le dépôt :**
    ```bash
-   git clone https://github.com/Aymen5285356/PresenceManager.git
+   git clone https://github.com/Aymen-ELYAAKOUBI/PresenceManager.git
    ```
 2. **Ouvrir le projet dans Android Studio.**
 3. **Synchroniser avec Gradle** (`File > Sync Project with Gradle Files`).
