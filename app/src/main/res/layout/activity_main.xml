@@ -18,8 +18,8 @@
         <!-- Logo ImageView -->
         <ImageView
             android:id="@+id/imgLogo"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
+            android:layout_width="220dp"
+            android:layout_height="220dp"
             android:src="@drawable/logo_presence"
             android:contentDescription="Logo Présence Manager" />
 
@@ -48,7 +48,7 @@
 
         <!-- Call to Action Button -->
         <Button
-            android:id="@+id/btnCommernicer"
+            android:id="@+id/btnCommencer"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="40dp"

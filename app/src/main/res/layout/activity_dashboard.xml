@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutDashboard"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8FAFC">
+
+    <!-- En-tête (RelativeLayout) -->
+    <RelativeLayout
+        android:id="@+id/layoutHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:minHeight="120dp"
+        android:background="#1E3A5F"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingTop="40dp"
+        android:paddingBottom="12dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- LinearLayout pour les textes de l'en-tête -->
+        <LinearLayout
+            android:id="@+id/layoutHeaderText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@id/imgProfil">
+
+            <TextView
+                android:id="@+id/txtAppName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Présence Manager"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:textColor="#FF9800" />
+
+            <TextView
+                android:id="@+id/txtSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Tableau de bord"
+                android:textSize="15sp"
+                android:textColor="#CBD5E1" />
+        </LinearLayout>
+
+        <!-- Icône de profil -->
+        <ImageView
+            android:id="@+id/imgProfil"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@android:drawable/ic_menu_myplaces"
+            android:contentDescription="Icône de profil" />
+
+    </RelativeLayout>
+
+    <!-- Message de bienvenue -->
+    <TextView
+        android:id="@+id/txtBienvenue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:text="Bienvenue, Formateur"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        android:textColor="#1E3A5F"
+        app:layout_constraintTop_toBottomOf="@id/layoutHeader"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Texte d'instruction / sous-titre -->
+    <TextView
+        android:id="@+id/txtInstruction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:text="Choisissez une fonctionnalité"
+        android:textSize="15sp"
+        android:textColor="#647488"
+        app:layout_constraintTop_toBottomOf="@id/txtBienvenue"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- GridLayout pour les 4 fonctionnalités -->
+    <GridLayout
+        android:id="@+id/gridFonctionnalites"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        android:columnCount="2"
+        android:rowCount="2"
+        app:layout_constraintTop_toBottomOf="@id/txtInstruction"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- 1. Carte Groupes -->
+        <LinearLayout
+            android:id="@+id/cardGroupes"
+            android:layout_width="0dp"
+            android:layout_height="145dp"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="6dp"
+            android:padding="12dp"
+            android:background="#E0E7FF"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@android:drawable/ic_menu_agenda"
+                android:contentDescription="Groupes" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Groupes"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#1E3A5F" />
+        </LinearLayout>
+
+        <!-- 2. Carte Faire l'appel (avec FrameLayout et Badge) -->
+        <LinearLayout
+            android:id="@+id/cardAppel"
+            android:layout_width="0dp"
+            android:layout_height="145dp"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="6dp"
+            android:padding="12dp"
+            android:background="#DBEAFE"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <FrameLayout
+                android:id="@+id/frameAppel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@android:drawable/ic_menu_edit"
+                    android:contentDescription="Faire l'appel" />
+
+                <!-- Badge rouge -->
+                <TextView
+                    android:id="@+id/txtBadge"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_gravity="top|end"
+                    android:background="@drawable/badge_background"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Faire l'appel"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#1E3A5F" />
+        </LinearLayout>
+
+        <!-- 3. Carte Historique -->
+        <LinearLayout
+            android:id="@+id/cardHistorique"
+            android:layout_width="0dp"
+            android:layout_height="145dp"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="6dp"
+            android:padding="12dp"
+            android:background="#D1FAE5"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@android:drawable/ic_menu_recent_history"
+                android:contentDescription="Historique" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Historique"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#1E3A5F" />
+        </LinearLayout>
+
+        <!-- 4. Carte Statistiques -->
+        <LinearLayout
+            android:id="@+id/cardStatistiques"
+            android:layout_width="0dp"
+            android:layout_height="145dp"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="6dp"
+            android:padding="12dp"
+            android:background="#FEF3C7"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@android:drawable/ic_menu_slideshow"
+                android:contentDescription="Statistiques" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Statistiques"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#1E3A5F" />
+        </LinearLayout>
+
+    </GridLayout>
+
+    <!-- Pied de page (Footer) -->
+    <TextView
+        android:id="@+id/txtFooterDashboard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="PrésenceManager - Version 1.0"
+        android:textSize="12sp"
+        android:textColor="#94A3B8"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
