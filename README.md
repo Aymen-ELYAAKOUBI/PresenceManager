@@ -101,7 +101,7 @@ Le tableau de bord (`DashboardActivity`) représente l'interface principale acce
 
 ### Capture d'écran (TP02)
 <p align="center">
-  <img src="screenshots/dashboard_tp02.png" width="280" alt="Capture TP02 - Tableau de bord">
+  <img src="screenshots/dashboard.png" width="280" alt="Capture TP02 - Tableau de bord">
 </p>
 
 ---
