@@ -53,7 +53,7 @@ L'interface repose sur une structure `LinearLayout` :
 ## 📸 Captures d'écran
 
 <p align="center">
-  <img src="resultat.png" width="300" alt="Résultat obtenu">
+  <img src="resultat.png" width="300" alt="Resultat obtenu">
 </p>
 
 ---
