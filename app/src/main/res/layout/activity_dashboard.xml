@@ -253,11 +253,13 @@
         android:id="@+id/txtFooterDashboard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:layout_marginBottom="24dp"
         android:text="PrésenceManager - Version 1.0"
         android:textSize="12sp"
         android:textColor="#94A3B8"
         android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/gridFonctionnalites"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
