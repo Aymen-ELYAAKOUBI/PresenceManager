@@ -34,7 +34,7 @@
     <string name="apropos_message">Application de gestion des pr\u00E9sences \u2014 Version 1.0</string>
 
     <string name="dev_titre">Informations du d\u00E9veloppeur</string>
-    <string name="dev_message">Application : Pr\u00E9senceManager\nVersion : 1.0\nD\u00E9veloppeur : Aymen El yaakoubi\nGitHub : https://github.com/Aymen5285356/PresenceManager</string>
+    <string name="dev_message">Application : Pr\u00E9senceManager\nVersion : 1.0\nD\u00E9veloppeur : Aymen El yaakoubi\nGitHub : https://github.com/Aymen-ELYAAKOUBI/PresenceManager</string>
 
     <string name="btn_ok">OK</string>
 </resources>

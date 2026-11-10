@@ -4,7 +4,7 @@
 > **Filière :** Développement Digital — Option Applications Mobiles  
 > **Technologies :** Kotlin + XML (Android Studio)  
 > **Auteur / Développeur :** Aymen El yaakoubi  
-> **Dépôt GitHub :** [https://github.com/Aymen5285356/PresenceManager](https://github.com/Aymen5285356/PresenceManager)
+> **Dépôt GitHub :** [https://github.com/Aymen-ELYAAKOUBI/PresenceManager](https://github.com/Aymen-ELYAAKOUBI/PresenceManager)
 
 ---
 
@@ -119,7 +119,7 @@ Le TP03 donne vie aux interfaces grâce aux écouteurs d'événements programmé
     Application : PrésenceManager
     Version : 1.0
     Développeur : Aymen El yaakoubi
-    GitHub : https://github.com/Aymen5285356/PresenceManager
+    GitHub : https://github.com/Aymen-ELYAAKOUBI/PresenceManager
     ```
   - **Lien interactif :** Le lien GitHub est rendu cliquable grâce à `Linkify.addLinks(texte, Linkify.WEB_URLS)` et `LinkMovementMethod.getInstance()`.
 
@@ -179,7 +179,7 @@ PresenceManager/
 
 1. **Cloner le dépôt :**
    ```bash
-   git clone https://github.com/Aymen5285356/PresenceManager.git
+   git clone https://github.com/Aymen-ELYAAKOUBI/PresenceManager.git
    ```
 2. **Ouvrir le projet dans Android Studio.**
 3. **Synchroniser avec Gradle** (`File > Sync Project with Gradle Files`).
