@@ -11,7 +11,7 @@
         android:id="@+id/txtTitreHistorique"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Historique"
+        android:text="@string/card_historique"
         android:textColor="#1E3A5F"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Fonctionnalité en cours de développement"
+        android:text="@string/en_cours_developpement"
         android:textColor="#64748B"
         android:textSize="16sp"
         android:gravity="center" />

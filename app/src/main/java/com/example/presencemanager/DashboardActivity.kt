@@ -49,11 +49,11 @@ class DashboardActivity : AppCompatActivity() {
 
         // Étape 6 — Appui long sur cardGroupes et cardAppel
         cardGroupes.setOnLongClickListener {
-            Toast.makeText(this, "Groupes : sélectionner ou consulter les groupes", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.toast_groupes, Toast.LENGTH_SHORT).show()
             true
         }
         cardAppel.setOnLongClickListener {
-            Toast.makeText(this, "Faire l'appel : démarrer une séance", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.toast_appel, Toast.LENGTH_SHORT).show()
             true
         }
 
@@ -64,9 +64,9 @@ class DashboardActivity : AppCompatActivity() {
 
             override fun onDoubleTap(e: MotionEvent): Boolean {
                 AlertDialog.Builder(this@DashboardActivity)
-                    .setTitle("À propos de PrésenceManager")
-                    .setMessage("Application de gestion des présences — Version 1.0")
-                    .setPositiveButton("OK", null)
+                    .setTitle(R.string.apropos_titre)
+                    .setMessage(R.string.apropos_message)
+                    .setPositiveButton(R.string.btn_ok, null)
                     .show()
                 return true
             }
@@ -86,14 +86,9 @@ class DashboardActivity : AppCompatActivity() {
 
     private fun afficherInfosDeveloppeur() {
         val dialogue = AlertDialog.Builder(this)
-            .setTitle("Informations du développeur")
-            .setMessage(
-                "Application : PrésenceManager\n" +
-                "Version : 1.0\n" +
-                "Développeur : Aymen El yaakoubi\n" +
-                "GitHub : https://github.com/Aymen5285356/PresenceManager"
-            )
-            .setPositiveButton("OK", null)
+            .setTitle(R.string.dev_titre)
+            .setMessage(R.string.dev_message)
+            .setPositiveButton(R.string.btn_ok, null)
             .show()
 
         val messageView = dialogue.findViewById<TextView>(android.R.id.message)

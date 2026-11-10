@@ -35,7 +35,7 @@
                 android:id="@+id/txtAppName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Présence Manager"
+                android:text="@string/dashboard_app_name"
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:textColor="#FF9800" />
@@ -45,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:text="Tableau de bord"
+                android:text="@string/dashboard_subtitle"
                 android:textSize="15sp"
                 android:textColor="#CBD5E1" />
         </LinearLayout>
@@ -58,7 +58,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:src="@android:drawable/ic_menu_myplaces"
-            android:contentDescription="Icône de profil" />
+            android:contentDescription="@string/profil_desc" />
 
     </RelativeLayout>
 
@@ -69,7 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
-        android:text="Bienvenue, Formateur"
+        android:text="@string/bienvenue_formateur"
         android:textSize="23sp"
         android:textStyle="bold"
         android:textColor="#1E3A5F"
@@ -83,7 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
-        android:text="Choisissez une fonctionnalité"
+        android:text="@string/instruction_dashboard"
         android:textSize="15sp"
         android:textColor="#647488"
         app:layout_constraintTop_toBottomOf="@id/txtBienvenue"
@@ -122,13 +122,13 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@android:drawable/ic_menu_agenda"
-                android:contentDescription="Groupes" />
+                android:contentDescription="@string/card_groupes" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Groupes"
+                android:text="@string/card_groupes"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="#1E3A5F" />
@@ -158,7 +158,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@android:drawable/ic_menu_edit"
-                    android:contentDescription="Faire l'appel" />
+                    android:contentDescription="@string/card_appel" />
 
                 <!-- Badge rouge -->
                 <TextView
@@ -168,7 +168,7 @@
                     android:layout_gravity="top|end"
                     android:background="@drawable/badge_background"
                     android:gravity="center"
-                    android:text="1"
+                    android:text="@string/badge_appel"
                     android:textColor="#FFFFFF"
                     android:textSize="12sp"
                     android:textStyle="bold" />
@@ -178,7 +178,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Faire l'appel"
+                android:text="@string/card_appel"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="#1E3A5F" />
@@ -203,13 +203,13 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@android:drawable/ic_menu_recent_history"
-                android:contentDescription="Historique" />
+                android:contentDescription="@string/card_historique" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Historique"
+                android:text="@string/card_historique"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="#1E3A5F" />
@@ -234,13 +234,13 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@android:drawable/ic_menu_slideshow"
-                android:contentDescription="Statistiques" />
+                android:contentDescription="@string/card_statistiques" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Statistiques"
+                android:text="@string/card_statistiques"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="#1E3A5F" />
@@ -255,7 +255,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="24dp"
-        android:text="PrésenceManager - Version 1.0"
+        android:text="@string/footer_dashboard"
         android:textSize="12sp"
         android:textColor="#94A3B8"
         android:gravity="center"

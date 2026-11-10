@@ -1,3 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Nom de l'application -->
     <string name="app_name">PresenceManager</string>
+
+    <!-- Ecran d'accueil (MainActivity) -->
+    <string name="titre_accueil">\u0050\u0072\u00E9\u0073\u0065\u006E\u0063\u0065\u004D\u0061\u006E\u0061\u0067\u0065\u0072</string>
+    <string name="desc_accueil">Application de gestion des pr\u00E9sences des stagiaires</string>
+    <string name="btn_commencer">Commencer l\'appel</string>
+    <string name="footer_accueil">Pr\u00E9senceManager | version 1.0</string>
+    <string name="logo_desc">Logo Pr\u00E9sence Manager</string>
+
+    <!-- Tableau de bord (DashboardActivity) -->
+    <string name="dashboard_app_name">Pr\u00E9sence Manager</string>
+    <string name="dashboard_subtitle">Tableau de bord</string>
+    <string name="profil_desc">Ic\u00F4ne de profil</string>
+    <string name="bienvenue_formateur">Bienvenue, Formateur</string>
+    <string name="instruction_dashboard">Choisissez une fonctionnalit\u00E9</string>
+    <string name="card_groupes">Groupes</string>
+    <string name="card_appel">Faire l\'appel</string>
+    <string name="card_historique">Historique</string>
+    <string name="card_statistiques">Statistiques</string>
+    <string name="badge_appel">1</string>
+    <string name="footer_dashboard">Pr\u00E9senceManager - Version 1.0</string>
+
+    <!-- Pages de destination -->
+    <string name="en_cours_developpement">Fonctionnalit\u00E9 en cours de d\u00E9veloppement</string>
+
+    <!-- Boites de dialogue et Toasts (TP03) -->
+    <string name="toast_groupes">Groupes : s\u00E9lectionner ou consulter les groupes</string>
+    <string name="toast_appel">Faire l\'appel : d\u00E9marrer une s\u00E9ance</string>
+
+    <string name="apropos_titre">\u00C0 propos de Pr\u00E9senceManager</string>
+    <string name="apropos_message">Application de gestion des pr\u00E9sences \u2014 Version 1.0</string>
+
+    <string name="dev_titre">Informations du d\u00E9veloppeur</string>
+    <string name="dev_message">Application : Pr\u00E9senceManager\nVersion : 1.0\nD\u00E9veloppeur : Aymen El yaakoubi\nGitHub : https://github.com/Aymen5285356/PresenceManager</string>
+
+    <string name="btn_ok">OK</string>
 </resources>

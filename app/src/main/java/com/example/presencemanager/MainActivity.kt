@@ -36,14 +36,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun afficherInfosDeveloppeur() {
         val dialogue = AlertDialog.Builder(this)
-            .setTitle("Informations du développeur")
-            .setMessage(
-                "Application : PrésenceManager\n" +
-                "Version : 1.0\n" +
-                "Développeur : Aymen El yaakoubi\n" +
-                "GitHub : https://github.com/Aymen5285356/PresenceManager"
-            )
-            .setPositiveButton("OK", null)
+            .setTitle(R.string.dev_titre)
+            .setMessage(R.string.dev_message)
+            .setPositiveButton(R.string.btn_ok, null)
             .show()
 
         val messageView = dialogue.findViewById<TextView>(android.R.id.message)
