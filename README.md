@@ -81,7 +81,7 @@ Le tableau de bord (`DashboardActivity`) structure l'interface des formateurs av
 | **Grille 2x2** | `@+id/gridFonctionnalites` | Grille des cartes |
 | **Cartes** | `cardGroupes`, `cardAppel`, `cardHistorique`, `cardStatistiques` | 4 cartes de fonctionnalités |
 | **Badge** | `@+id/txtBadge` | Notification "1" sur l'appel |
-| **Pied de page** | `@+id/txtFooterDashboard` | Version 1.0 (placé directement sous la grille) |
+| **Pied de page** | `@+id/txtFooterDashboard` | Version 1.0 (fixé au bas de l'écran avec marginBottom 24dp) |
 
 ---
 
@@ -154,7 +154,7 @@ PresenceManager/
 │   │   │   ├── res/
 │   │   │   │   ├── layout/
 │   │   │   │   │   ├── activity_main.xml          # Accueil
-│   │   │   │   │   ├── activity_dashboard.xml     # Tableau de bord (Footer sous grille)
+│   │   │   │   │   ├── activity_dashboard.xml     # Tableau de bord (Footer fixé au bas)
 │   │   │   │   │   ├── activity_groupes.xml       # Page Groupes
 │   │   │   │   │   ├── activity_appel.xml         # Page Faire l'appel
 │   │   │   │   │   ├── activity_historique.xml    # Page Historique
