@@ -6,61 +6,34 @@
     android:layout_height="match_parent"
     android:background="#F8FAFC">
 
-    <!-- En-tête (RelativeLayout) -->
-    <RelativeLayout
-        android:id="@+id/layoutHeader"
+    <!-- Toolbar (TP04 - Menu d'options) -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarDashboard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:minHeight="120dp"
+        android:minHeight="?attr/actionBarSize"
         android:background="#1E3A5F"
-        android:paddingStart="24dp"
-        android:paddingEnd="24dp"
-        android:paddingTop="40dp"
-        android:paddingBottom="12dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        app:title="@string/dashboard_app_name"
+        app:titleTextColor="#FF9800"
+        app:subtitle="@string/dashboard_subtitle"
+        app:subtitleTextColor="#CBD5E1"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- LinearLayout pour les textes de l'en-tête -->
-        <LinearLayout
-            android:id="@+id/layoutHeaderText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_centerVertical="true"
-            android:layout_alignParentStart="true"
-            android:layout_toStartOf="@id/imgProfil">
-
-            <TextView
-                android:id="@+id/txtAppName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dashboard_app_name"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                android:textColor="#FF9800" />
-
-            <TextView
-                android:id="@+id/txtSubtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:text="@string/dashboard_subtitle"
-                android:textSize="15sp"
-                android:textColor="#CBD5E1" />
-        </LinearLayout>
-
-        <!-- Icône de profil -->
+        <!-- Icône de profil à droite de la Toolbar -->
         <ImageView
             android:id="@+id/imgProfil"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="8dp"
             android:src="@android:drawable/ic_menu_myplaces"
             android:contentDescription="@string/profil_desc" />
 
-    </RelativeLayout>
+    </com.google.android.material.appbar.MaterialToolbar>
 
     <!-- Message de bienvenue -->
     <TextView
@@ -68,12 +41,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:text="@string/bienvenue_formateur"
         android:textSize="23sp"
         android:textStyle="bold"
         android:textColor="#1E3A5F"
-        app:layout_constraintTop_toBottomOf="@id/layoutHeader"
+        app:layout_constraintTop_toBottomOf="@id/toolbarDashboard"
         app:layout_constraintStart_toStartOf="parent" />
 
     <!-- Texte d'instruction / sous-titre -->
@@ -94,7 +67,7 @@
         android:id="@+id/gridFonctionnalites"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:layout_marginStart="18dp"
         android:layout_marginEnd="18dp"
         android:columnCount="2"
@@ -247,6 +220,40 @@
         </LinearLayout>
 
     </GridLayout>
+
+    <!-- Étape 2 (TP04) — Conteneur des deux boutons CAB et Pop-up -->
+    <LinearLayout
+        android:id="@+id/layoutActions"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintTop_toBottomOf="@id/gridFonctionnalites"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/btnCab"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="@string/btn_cab"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#2563EB" />
+
+        <Button
+            android:id="@+id/btnPopup"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="@string/btn_popup"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#0F766E" />
+    </LinearLayout>
 
     <!-- Pied de page (Footer) -->
     <TextView

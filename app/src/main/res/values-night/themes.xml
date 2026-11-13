@@ -1,7 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.PresenceManager" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <!-- Overlay Contextual Action Bar over app bar -->
+        <item name="windowActionModeOverlay">true</item>
+        <item name="actionModeBackground">@color/navy_blue</item>
     </style>
 </resources>

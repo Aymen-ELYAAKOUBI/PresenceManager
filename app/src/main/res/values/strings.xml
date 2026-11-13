@@ -37,4 +37,33 @@
     <string name="dev_message">Application : Pr\u00E9senceManager\nVersion : 1.0\nD\u00E9veloppeur : Aymen El yaakoubi\nGitHub : https://github.com/Aymen-ELYAAKOUBI/PresenceManager</string>
 
     <string name="btn_ok">OK</string>
+
+    <!-- Menus (TP04) -->
+    <!-- Menu d'options -->
+    <string name="menu_accueil">Accueil</string>
+    <string name="menu_groupes">Groupes</string>
+    <string name="menu_appel">Faire l\'appel</string>
+    <string name="menu_apropos">\u00C0 propos</string>
+    <string name="menu_quitter">Quitter</string>
+
+    <!-- Menu Contextuel Flottant -->
+    <string name="menu_ctx_titre">Options de la carte</string>
+    <string name="menu_ctx_consulter">Consulter les d\u00E9tails</string>
+    <string name="menu_ctx_partager">Partager</string>
+    <string name="menu_ctx_supprimer">Supprimer</string>
+
+    <!-- Menu Contextual Action Bar (CAB) -->
+    <string name="menu_cab_titre">Actions contextuelles</string>
+    <string name="menu_cab_afficher">Afficher</string>
+    <string name="menu_cab_supprimer">Supprimer</string>
+    <string name="menu_cab_terminer">Terminer</string>
+    <string name="msg_cab_afficher">Action Afficher ex\u00E9cut\u00E9e.</string>
+    <string name="msg_cab_supprimer">Action Supprimer ex\u00E9cut\u00E9e.</string>
+
+    <!-- Menu Pop-up -->
+    <string name="menu_popup_ouvrir_groupes">Ouvrir Groupes</string>
+    <string name="menu_popup_informations">Informations</string>
+    <string name="msg_popup_info">Menu contextuel flottant du tableau de bord.</string>
+    <string name="btn_cab">Activer CAB</string>
+    <string name="btn_popup">Menu Pop-up</string>
 </resources>

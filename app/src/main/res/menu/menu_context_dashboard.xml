@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_ctx_consulter"
+        android:title="@string/menu_ctx_consulter" />
+
+    <item
+        android:id="@+id/action_ctx_partager"
+        android:title="@string/menu_ctx_partager" />
+
+    <item
+        android:id="@+id/action_ctx_supprimer"
+        android:title="@string/menu_ctx_supprimer" />
+
+</menu>
