@@ -14,9 +14,10 @@
 3. [TP01 — Écran d'accueil](#-tp01--écran-daccueil)
 4. [TP02 — Tableau de bord (Dashboard)](#-tp02--tableau-de-bord-dashboard)
 5. [TP03 — Gestion des événements](#-tp03--gestion-des-événements)
-6. [Captures d'écran](#-captures-décran)
-7. [Structure du projet](#-structure-du-projet)
-8. [Installation et exécution](#-installation-et-exécution)
+6. [TP04 — Les Menus sous Android](#-tp04--les-menus-sous-android)
+7. [Captures d'écran](#-captures-décran)
+8. [Structure du projet](#-structure-du-projet)
+9. [Installation et exécution](#-installation-et-exécution)
 
 ---
 
@@ -27,6 +28,7 @@ Le projet regroupe les réalisations des travaux pratiques suivants :
 - **TP01** : Conception de l'écran d'accueil (`MainActivity`) avec `LinearLayout`.
 - **TP02** : Conception du tableau de bord (`DashboardActivity`) combinant `ConstraintLayout`, `RelativeLayout`, `LinearLayout`, `GridLayout` et `FrameLayout`.
 - **TP03** : Programmation des interactions utilisateur et gestion des événements en Kotlin (clic simple, appui long, double-clic et boîtes de dialogue dynamiques avec liens cliquables).
+- **TP04** : Implémentation complète des menus sous Android (Menu d'options, Menu contextuel flottant, Barre d'action contextuelle - CAB, et Menu Pop-up).
 
 ---
 
@@ -74,7 +76,7 @@ Le tableau de bord (`DashboardActivity`) structure l'interface des formateurs av
 | Composant | Identifiant (ID) | Rôle |
 | :--- | :--- | :--- |
 | **Conteneur racine** | `@+id/layoutDashboard` | `ConstraintLayout` principal |
-| **En-tête** | `@+id/layoutHeader` | Bandeau supérieur |
+| **En-tête / Toolbar** | `@+id/toolbarDashboard` | En-tête supérieur bleu foncé avec `MaterialToolbar` |
 | **Titre / Sous-titre** | `@+id/txtAppName` / `@+id/txtSubtitle` | Titres d'en-tête |
 | **Icône profil** | `@+id/imgProfil` | Icône en haut à droite |
 | **Bienvenue / Instruction** | `@+id/txtBienvenue` / `@+id/txtInstruction` | Textes d'accueil |
@@ -96,38 +98,56 @@ Le TP03 donne vie aux interfaces grâce aux écouteurs d'événements programmé
   - `cardAppel` ➔ `AppelActivity` (`activity_appel.xml`)
   - `cardHistorique` ➔ `HistoriqueActivity` (`activity_historique.xml`)
   - `cardStatistiques` ➔ `StatistiquesActivity` (`activity_statistiques.xml`)
-  *Chaque écran de destination présente un titre centré en gras (`24sp`, `#1E3A5F`) et la mention « Fonctionnalité en cours de développement » (`16sp`, `#64748B`).*
 
 ### 2. Aide contextuelle par Appui Long (`OnLongClickListener`)
 - **Appui long sur `cardGroupes`** : Affiche un Toast informatif *« Groupes : sélectionner ou consulter les groupes »*.
 - **Appui long sur `cardAppel`** : Affiche un Toast informatif *« Faire l'appel : démarrer une séance »*.
-- L'écouteur retourne `true` pour consommer l'événement et éviter l'ouverture accidentelle de la page de destination.
 
 ### 3. Double-clic sur l'icône de profil (`GestureDetector` + `onDoubleTap`)
-- Sur `imgProfil`, un appui simple ne déclenche rien.
-- Deux tapotements rapides déclenchent `onDoubleTap()` qui affiche un `AlertDialog` :
-  - **Titre :** `À propos de PrésenceManager`
-  - **Message :** `Application de gestion des présences — Version 1.0`
-  - **Bouton :** `OK`
+- Sur `imgProfil`, deux tapotements rapides déclenchent `onDoubleTap()` qui affiche un `AlertDialog` de présentation (`À propos de PrésenceManager`).
 
 ### 4. Boîte « Informations du développeur » via `Version 1.0`
 - Accessible par un clic simple sur `txtFooter` (accueil) ou `txtFooterDashboard` (tableau de bord).
-- Affiche une boîte de dialogue `AlertDialog` complète :
-  - **Titre :** `Informations du développeur`
-  - **Message :**
-    ```text
-    Application : PrésenceManager
-    Version : 1.0
-    Développeur : Aymen El yaakoubi
-    GitHub : https://github.com/Aymen-ELYAAKOUBI/PresenceManager
-    ```
-  - **Lien interactif :** Le lien GitHub est rendu cliquable grâce à `Linkify.addLinks(texte, Linkify.WEB_URLS)` et `LinkMovementMethod.getInstance()`.
+
+---
+
+## 📑 TP04 — Les Menus sous Android
+
+Le TP04 introduit les 4 mécanismes majeurs de menus sous Android au sein du tableau de bord :
+
+### 1. Menu d'options (`onCreateOptionsMenu` / `onOptionsItemSelected`)
+- **Emplacement :** Intégré dans la `MaterialToolbar` via `setSupportActionBar(toolbar)`.
+- **Fichier de ressources :** `res/menu/menu_options_dashboard.xml`
+- **Fonctionnalités :**
+  - **Accueil** ➔ Retour à l'écran principal (`MainActivity`)
+  - **Groupes** ➔ Bascule vers `GroupesActivity`
+  - **Faire l'appel** ➔ Bascule vers `AppelActivity`
+  - **À propos** ➔ Affiche la boîte de dialogue *À propos*
+  - **Quitter** ➔ Ferme l'application (`finishAffinity()`)
+
+### 2. Menu contextuel flottant (`registerForContextMenu` / `onCreateContextMenu`)
+- **Emplacement :** Associé aux 4 cartes de fonctionnalités via `registerForContextMenu()`.
+- **Fichier de ressources :** `res/menu/menu_context_dashboard.xml`
+- **Déclenchement :** Appui prolongé sur une carte.
+- **Actions disponibles :** *Consulter les détails*, *Partager*, et *Supprimer*.
+
+### 3. Barre d'action contextuelle (CAB — `ActionMode.Callback`)
+- **Emplacement :** Bouton **Activer CAB** (`btnCab`).
+- **Fichier de ressources :** `res/menu/menu_cab_dashboard.xml`
+- **Déclenchement :** `startSupportActionMode(cabCallback)` qui superpose temporairement la barre d'action sur l'en-tête bleu.
+- **Actions disponibles :** *Afficher*, *Supprimer*, et *Terminer*.
+
+### 4. Menu Pop-up (`PopupMenu`)
+- **Emplacement :** Bouton **Menu Pop-up** (`btnPopup`).
+- **Fichier de ressources :** `res/menu/menu_popup_dashboard.xml`
+- **Déclenchement :** Ancré directement sous le bouton au clic simple.
+- **Actions disponibles :** *Ouvrir Groupes* et *Informations*.
 
 ---
 
 ## 📸 Captures d'écran
 
-| 1. Tableau de bord (TP02 / TP03) | 2. Page ouverte par clic simple (`GroupesActivity`) |
+| 1. Tableau de bord (TP02 / TP03 / TP04) | 2. Page ouverte par clic simple (`GroupesActivity`) |
 | :---: | :---: |
 | <img src="screenshots/dashboard_tp03.png" width="260" alt="Tableau de bord"> | <img src="screenshots/page_groupes.png" width="260" alt="Page Groupes"> |
 
@@ -146,19 +166,24 @@ PresenceManager/
 │   │   ├── main/
 │   │   │   ├── java/com/example/presencemanager/
 │   │   │   │   ├── MainActivity.kt         # Accueil (TP01) + dialogue développeur (TP03)
-│   │   │   │   ├── DashboardActivity.kt    # Tableau de bord (TP02) + gestion des événements (TP03)
-│   │   │   │   ├── GroupesActivity.kt      # Destination Groupes (TP03)
-│   │   │   │   ├── AppelActivity.kt        # Destination Faire l'appel (TP03)
-│   │   │   │   ├── HistoriqueActivity.kt   # Destination Historique (TP03)
-│   │   │   │   └── StatistiquesActivity.kt # Destination Statistiques (TP03)
+│   │   │   │   ├── DashboardActivity.kt    # Tableau de bord (TP02) + Événements (TP03) + Menus (TP04)
+│   │   │   │   ├── GroupesActivity.kt      # Destination Groupes
+│   │   │   │   ├── AppelActivity.kt        # Destination Faire l'appel
+│   │   │   │   ├── HistoriqueActivity.kt   # Destination Historique
+│   │   │   │   └── StatistiquesActivity.kt # Destination Statistiques
 │   │   │   ├── res/
 │   │   │   │   ├── layout/
-│   │   │   │   │   ├── activity_main.xml          # Accueil
-│   │   │   │   │   ├── activity_dashboard.xml     # Tableau de bord (Footer fixé au bas)
-│   │   │   │   │   ├── activity_groupes.xml       # Page Groupes
-│   │   │   │   │   ├── activity_appel.xml         # Page Faire l'appel
-│   │   │   │   │   ├── activity_historique.xml    # Page Historique
-│   │   │   │   │   └── activity_statistiques.xml  # Page Statistiques
+│   │   │   │   │   ├── activity_main.xml          # Layout Écran d'accueil
+│   │   │   │   │   ├── activity_dashboard.xml     # Layout Tableau de bord
+│   │   │   │   │   ├── activity_groupes.xml       # Layout Groupes
+│   │   │   │   │   ├── activity_appel.xml         # Layout Faire l'appel
+│   │   │   │   │   ├── activity_historique.xml    # Layout Historique
+│   │   │   │   │   └── activity_statistiques.xml  # Layout Statistiques
+│   │   │   │   ├── menu/
+│   │   │   │   │   ├── menu_options_dashboard.xml # Menu d'options (TP04)
+│   │   │   │   │   ├── menu_context_dashboard.xml # Menu contextuel flottant (TP04)
+│   │   │   │   │   ├── menu_cab_dashboard.xml     # Barre d'action contextuelle (CAB) (TP04)
+│   │   │   │   │   └── menu_popup_dashboard.xml   # Menu Pop-up (TP04)
 │   │   │   │   ├── drawable/
 │   │   │   │   │   ├── badge_background.xml       # Badge rouge arrondi
 │   │   │   │   │   └── logo_presence.jpg
@@ -184,9 +209,11 @@ PresenceManager/
 2. **Ouvrir le projet dans Android Studio.**
 3. **Synchroniser avec Gradle** (`File > Sync Project with Gradle Files`).
 4. **Lancer sur un émulateur ou appareil physique** (`Run 'app'`).
-5. Tester les interactions :
+5. Tester les fonctionnalités :
    - Clic sur **« Commencer l'appel »** pour basculer vers le tableau de bord.
-   - Clic sur chacune des 4 cartes pour visiter les fonctionnalités.
-   - Appui long sur **Groupes** ou **Faire l'appel** pour afficher le message Toast.
+   - Accéder au **Menu d'options** via les 3 points en haut à droite de la Toolbar.
+   - Effectuer un appui long sur une carte pour afficher le **Menu contextuel flottant**.
+   - Cliquer sur le bouton **Activer CAB** pour démarrer le Mode d'Action Contextuelle.
+   - Cliquer sur le bouton **Menu Pop-up** pour afficher le menu ancré.
    - Double-clic sur l'icône de profil en haut à droite pour afficher la boîte **« À propos »**.
-   - Clic sur le texte **« Version 1.0 »** pour afficher la boîte **« Informations du développeur »** avec le lien GitHub cliquable.
+   - Clic sur le texte **« Version 1.0 »** pour afficher la boîte **« Informations du développeur »**.
