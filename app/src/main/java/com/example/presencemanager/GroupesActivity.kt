@@ -1,19 +1,25 @@
 package com.example.presencemanager
 
+import android.app.AlertDialog
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.BaseAdapter
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.ListView
+import android.widget.PopupMenu
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.view.ActionMode
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
@@ -23,6 +29,45 @@ class GroupesActivity : AppCompatActivity() {
     private lateinit var listView: ListView
     private lateinit var btnArrayAdapter: LinearLayout
     private lateinit var btnBaseAdapter: LinearLayout
+
+    private var actionMode: ActionMode? = null
+
+    // Callback pour le Contextual Action Mode (CAB - TP04)
+    private val cabCallback = object : ActionMode.Callback {
+        override fun onCreateActionMode(mode: ActionMode, menu: Menu): Boolean {
+            mode.menuInflater.inflate(R.menu.menu_cab_dashboard, menu)
+            mode.title = getString(R.string.menu_cab_titre)
+            return true
+        }
+
+        override fun onPrepareActionMode(mode: ActionMode, menu: Menu): Boolean = false
+
+        override fun onActionItemClicked(mode: ActionMode, item: MenuItem): Boolean {
+            return when (item.itemId) {
+                R.id.action_afficher -> {
+                    AlertDialog.Builder(this@GroupesActivity)
+                        .setTitle(R.string.menu_cab_afficher)
+                        .setMessage(R.string.msg_cab_afficher)
+                        .setPositiveButton(R.string.btn_ok, null)
+                        .show()
+                    true
+                }
+                R.id.action_supprimer -> {
+                    Toast.makeText(this@GroupesActivity, R.string.msg_cab_supprimer, Toast.LENGTH_SHORT).show()
+                    true
+                }
+                R.id.action_terminer -> {
+                    mode.finish()
+                    true
+                }
+                else -> false
+            }
+        }
+
+        override fun onDestroyActionMode(mode: ActionMode) {
+            actionMode = null
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +95,9 @@ class GroupesActivity : AppCompatActivity() {
         btnArrayAdapter = findViewById(R.id.btnArrayAdapter)
         btnBaseAdapter = findViewById(R.id.btnBaseAdapter)
 
+        val btnCabGroupes = findViewById<Button>(R.id.btnCabGroupes)
+        val btnPopupGroupes = findViewById<Button>(R.id.btnPopupGroupes)
+
         // Configuration initiale avec ArrayAdapter
         chargerAvecArrayAdapter()
 
@@ -63,6 +111,38 @@ class GroupesActivity : AppCompatActivity() {
         btnBaseAdapter.setOnClickListener {
             chargerAvecBaseAdapter()
             Toast.makeText(this, "Liste chargée avec BaseAdapter", Toast.LENGTH_SHORT).show()
+        }
+
+        // Bouton Activer CAB
+        btnCabGroupes.setOnClickListener {
+            if (actionMode == null) {
+                actionMode = startSupportActionMode(cabCallback)
+            }
+        }
+
+        // Bouton Menu Pop-up
+        btnPopupGroupes.setOnClickListener {
+            val popupMenu = PopupMenu(this, btnPopupGroupes)
+            popupMenu.menuInflater.inflate(R.menu.menu_popup_dashboard, popupMenu.menu)
+
+            popupMenu.setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.action_ouvrir_groupes -> {
+                        Toast.makeText(this, "Vous êtes déjà dans la page Groupes", Toast.LENGTH_SHORT).show()
+                        true
+                    }
+                    R.id.action_informations -> {
+                        AlertDialog.Builder(this)
+                            .setTitle(R.string.dashboard_app_name)
+                            .setMessage(R.string.msg_popup_info)
+                            .setPositiveButton(R.string.btn_ok, null)
+                            .show()
+                        true
+                    }
+                    else -> false
+                }
+            }
+            popupMenu.show()
         }
 
         listView.setOnItemClickListener { _, _, position, _ ->
