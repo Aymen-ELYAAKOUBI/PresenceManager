@@ -66,79 +66,7 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Ligne 1 : Les 2 Cartes Adapteurs (ArrayAdapter & BaseAdapter) -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:baselineAligned="false"
-            android:layout_marginBottom="12dp">
 
-            <!-- 1. Carte ArrayAdapter -->
-            <LinearLayout
-                android:id="@+id/btnArrayAdapter"
-                android:layout_width="0dp"
-                android:layout_height="75dp"
-                android:layout_weight="1"
-                android:layout_marginEnd="6dp"
-                android:background="#E0E7FF"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <ImageView
-                    android:layout_width="26dp"
-                    android:layout_height="26dp"
-                    android:src="@android:drawable/ic_menu_sort_by_size"
-                    app:tint="#1E3A5F"
-                    android:contentDescription="@string/btn_array_adapter" />
-
-                <TextView
-                    android:id="@+id/txtBtnArrayAdapter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:text="@string/btn_array_adapter"
-                    android:textColor="#1E3A5F"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <!-- 2. Carte BaseAdapter -->
-            <LinearLayout
-                android:id="@+id/btnBaseAdapter"
-                android:layout_width="0dp"
-                android:layout_height="75dp"
-                android:layout_weight="1"
-                android:layout_marginStart="6dp"
-                android:background="#DBEAFE"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <ImageView
-                    android:layout_width="26dp"
-                    android:layout_height="26dp"
-                    android:src="@android:drawable/ic_menu_manage"
-                    app:tint="#1E3A5F"
-                    android:contentDescription="@string/btn_base_adapter" />
-
-                <TextView
-                    android:id="@+id/txtBtnBaseAdapter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:text="@string/btn_base_adapter"
-                    android:textColor="#1E3A5F"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-        </LinearLayout>
 
         <!-- Ligne 2 : Les 2 Boutons Pill (Activer CAB & Menu Pop-up) -->
         <LinearLayout

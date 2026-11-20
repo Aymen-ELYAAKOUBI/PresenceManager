@@ -2,7 +2,6 @@ package com.example.presencemanager
 
 import android.app.AlertDialog
 import android.content.Context
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
@@ -12,7 +11,6 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.BaseAdapter
 import android.widget.Button
-import android.widget.LinearLayout
 import android.widget.ListView
 import android.widget.PopupMenu
 import android.widget.TextView
@@ -27,8 +25,6 @@ class GroupesActivity : AppCompatActivity() {
 
     private lateinit var listeGroupes: List<GroupeCMC>
     private lateinit var listView: ListView
-    private lateinit var btnArrayAdapter: LinearLayout
-    private lateinit var btnBaseAdapter: LinearLayout
 
     private var actionMode: ActionMode? = null
 
@@ -92,26 +88,13 @@ class GroupesActivity : AppCompatActivity() {
         )
 
         listView = findViewById(R.id.listGroupesCMC)
-        btnArrayAdapter = findViewById(R.id.btnArrayAdapter)
-        btnBaseAdapter = findViewById(R.id.btnBaseAdapter)
 
         val btnCabGroupes = findViewById<Button>(R.id.btnCabGroupes)
         val btnPopupGroupes = findViewById<Button>(R.id.btnPopupGroupes)
 
-        // Configuration initiale avec ArrayAdapter
-        chargerAvecArrayAdapter()
-
-        // Bouton 1 : ArrayAdapter
-        btnArrayAdapter.setOnClickListener {
-            chargerAvecArrayAdapter()
-            Toast.makeText(this, "Liste chargée avec ArrayAdapter", Toast.LENGTH_SHORT).show()
-        }
-
-        // Bouton 2 : BaseAdapter
-        btnBaseAdapter.setOnClickListener {
-            chargerAvecBaseAdapter()
-            Toast.makeText(this, "Liste chargée avec BaseAdapter", Toast.LENGTH_SHORT).show()
-        }
+        // Charger avec ArrayAdapter
+        val adapter = GroupeArrayAdapter(this, listeGroupes)
+        listView.adapter = adapter
 
         // Bouton Activer CAB
         btnCabGroupes.setOnClickListener {
@@ -153,22 +136,6 @@ class GroupesActivity : AppCompatActivity() {
                 Toast.LENGTH_SHORT
             ).show()
         }
-    }
-
-    private fun chargerAvecArrayAdapter() {
-        val adapter = GroupeArrayAdapter(this, listeGroupes)
-        listView.adapter = adapter
-
-        btnArrayAdapter.setBackgroundColor(Color.parseColor("#C7D2FE"))
-        btnBaseAdapter.setBackgroundColor(Color.parseColor("#DBEAFE"))
-    }
-
-    private fun chargerAvecBaseAdapter() {
-        val adapter = GroupeBaseAdapter(this, listeGroupes)
-        listView.adapter = adapter
-
-        btnBaseAdapter.setBackgroundColor(Color.parseColor("#BFDBFE"))
-        btnArrayAdapter.setBackgroundColor(Color.parseColor("#E0E7FF"))
     }
 }
 
