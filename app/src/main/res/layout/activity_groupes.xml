@@ -68,9 +68,9 @@
 
 
 
-        <!-- Ligne 2 : Les 2 Boutons Pill (Activer CAB & Menu Pop-up) -->
+        <!-- Ligne des 2 Boutons Pill (ArrayAdapter & BaseAdapter) -->
         <LinearLayout
-            android:id="@+id/layoutActionsGroupes"
+            android:id="@+id/layoutAdaptersGroupes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -78,12 +78,12 @@
             android:layout_marginBottom="16dp">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnCabGroupes"
+                android:id="@+id/btnArrayAdapter"
                 android:layout_width="0dp"
                 android:layout_height="52dp"
                 android:layout_weight="1"
                 android:layout_marginEnd="6dp"
-                android:text="@string/btn_cab"
+                android:text="@string/btn_array_adapter"
                 android:textColor="#FFFFFF"
                 android:textSize="14sp"
                 android:textStyle="bold"
@@ -91,12 +91,12 @@
                 app:backgroundTint="#2563EB" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnPopupGroupes"
+                android:id="@+id/btnBaseAdapter"
                 android:layout_width="0dp"
                 android:layout_height="52dp"
                 android:layout_weight="1"
                 android:layout_marginStart="6dp"
-                android:text="@string/btn_popup"
+                android:text="@string/btn_base_adapter"
                 android:textColor="#FFFFFF"
                 android:textSize="14sp"
                 android:textStyle="bold"
