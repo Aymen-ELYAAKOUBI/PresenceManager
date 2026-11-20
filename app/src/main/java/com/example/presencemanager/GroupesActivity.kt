@@ -21,7 +21,6 @@ class GroupesActivity : AppCompatActivity() {
 
     private lateinit var listeGroupes: List<GroupeCMC>
     private lateinit var listView: ListView
-    private lateinit var txtModeAdapter: TextView
     private lateinit var btnArrayAdapter: LinearLayout
     private lateinit var btnBaseAdapter: LinearLayout
 
@@ -47,11 +46,6 @@ class GroupesActivity : AppCompatActivity() {
             GroupeCMC("CMC - DES101", "Design Graphique & Digital", "1ère Année", 23, "Studio Design")
         )
 
-        val txtTotalGroupes = findViewById<TextView>(R.id.txtTotalGroupes)
-        val totalStagiaires = listeGroupes.sumOf { it.effectif }
-        txtTotalGroupes.text = "${listeGroupes.size} Groupes CMC (${totalStagiaires} Stagiaires)"
-
-        txtModeAdapter = findViewById(R.id.txtModeAdapter)
         listView = findViewById(R.id.listGroupesCMC)
         btnArrayAdapter = findViewById(R.id.btnArrayAdapter)
         btnBaseAdapter = findViewById(R.id.btnBaseAdapter)
@@ -84,7 +78,6 @@ class GroupesActivity : AppCompatActivity() {
     private fun chargerAvecArrayAdapter() {
         val adapter = GroupeArrayAdapter(this, listeGroupes)
         listView.adapter = adapter
-        txtModeAdapter.text = getString(R.string.mode_array_adapter)
 
         btnArrayAdapter.setBackgroundColor(Color.parseColor("#C7D2FE"))
         btnBaseAdapter.setBackgroundColor(Color.parseColor("#DBEAFE"))
@@ -93,7 +86,6 @@ class GroupesActivity : AppCompatActivity() {
     private fun chargerAvecBaseAdapter() {
         val adapter = GroupeBaseAdapter(this, listeGroupes)
         listView.adapter = adapter
-        txtModeAdapter.text = getString(R.string.mode_base_adapter)
 
         btnBaseAdapter.setBackgroundColor(Color.parseColor("#BFDBFE"))
         btnArrayAdapter.setBackgroundColor(Color.parseColor("#E0E7FF"))
