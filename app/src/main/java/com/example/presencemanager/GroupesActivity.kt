@@ -1,25 +1,19 @@
 package com.example.presencemanager
 
-import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.BaseAdapter
 import android.widget.Button
 import android.widget.ListView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class GroupesActivity : AppCompatActivity() {
 
-    private lateinit var listeGroupes: List<GroupeCMC>
-    private lateinit var listView: ListView
+    private lateinit var lvGroupes: ListView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,115 +26,73 @@ class GroupesActivity : AppCompatActivity() {
             insets
         }
 
-        listeGroupes = listOf(
-            GroupeCMC("CMC - DEV101", "Développement Digital", "1ère Année", 28, "Lab Mobile 1"),
-            GroupeCMC("CMC - DEV102", "Développement Digital", "1ère Année", 26, "Lab Web 2"),
-            GroupeCMC("CMC - DEV201", "Développement Digital (Option Mobile)", "2ème Année", 25, "Lab Mobile 2"),
-            GroupeCMC("CMC - DEV202", "Développement Digital (Option Fullstack)", "2ème Année", 27, "Salle Info 3"),
-            GroupeCMC("CMC - INF101", "Infrastructure Digitale", "1ère Année", 24, "Lab Réseaux"),
-            GroupeCMC("CMC - AI101", "Intelligence Artificielle & Data", "1ère Année", 22, "Salle High-Tech"),
-            GroupeCMC("CMC - CYBER101", "Cybersécurité & Cloud", "1ère Année", 20, "Lab Sécurité"),
-            GroupeCMC("CMC - DES101", "Design Graphique & Digital", "1ère Année", 23, "Studio Design")
-        )
-
-        listView = findViewById(R.id.listGroupesCMC)
-
+        lvGroupes = findViewById(R.id.lvGroupes)
         val btnArrayAdapter = findViewById<Button>(R.id.btnArrayAdapter)
         val btnBaseAdapter = findViewById<Button>(R.id.btnBaseAdapter)
 
-        // Configuration initiale avec ArrayAdapter
-        chargerAvecArrayAdapter()
-
-        // Bouton Pill 1 : ArrayAdapter
+        // Clic sur le bouton ArrayAdapter -> Appel de la méthode 1
         btnArrayAdapter.setOnClickListener {
-            chargerAvecArrayAdapter()
-            Toast.makeText(this, "Liste chargée avec ArrayAdapter", Toast.LENGTH_SHORT).show()
+            afficherAvecArrayAdapter()
         }
 
-        // Bouton Pill 2 : BaseAdapter
+        // Clic sur le bouton BaseAdapter -> Appel de la méthode 2
         btnBaseAdapter.setOnClickListener {
-            chargerAvecBaseAdapter()
-            Toast.makeText(this, "Liste chargée avec BaseAdapter", Toast.LENGTH_SHORT).show()
+            afficherAvecBaseAdapter()
         }
 
-        listView.setOnItemClickListener { _, _, position, _ ->
-            val groupe = listeGroupes[position]
+        // Affichage initial par défaut avec BaseAdapter
+        afficherAvecBaseAdapter()
+    }
+
+    // MÉTHODE 1 : ARRAYADAPTER (Liste simple)
+    fun afficherAvecArrayAdapter() {
+        val groupes = arrayOf(
+            "DEVAM201", "DEVAM202", "DEVAM203",
+            "DEVAM204", "DEVAM205", "DEVAM206",
+            "DEVAM207", "DEVAM208", "DEVAM209", "DEVAM210"
+        )
+
+        val adapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_list_item_1,
+            groupes
+        )
+        lvGroupes.adapter = adapter
+
+        lvGroupes.setOnItemClickListener { _, _, position, _ ->
             Toast.makeText(
                 this,
-                "Groupe sélectionné : ${groupe.code} (${groupe.effectif} stagiaires - ${groupe.salle})",
+                groupes[position],
                 Toast.LENGTH_SHORT
             ).show()
         }
     }
 
-    private fun chargerAvecArrayAdapter() {
-        val adapter = GroupeArrayAdapter(this, listeGroupes)
-        listView.adapter = adapter
-    }
+    // MÉTHODE 2 : BASEADAPTER (Liste personnalisée avec ViewHolder)
+    fun afficherAvecBaseAdapter() {
+        val groupes = listOf(
+            Groupe("DEVAM201", 24),
+            Groupe("DEVAM202", 22),
+            Groupe("DEVAM203", 26),
+            Groupe("DEVAM204", 23),
+            Groupe("DEVAM205", 25),
+            Groupe("DEVAM206", 21),
+            Groupe("DEVAM207", 20),
+            Groupe("DEVAM208", 22),
+            Groupe("DEVAM209", 25),
+            Groupe("DEVAM210", 23)
+        )
 
-    private fun chargerAvecBaseAdapter() {
-        val adapter = GroupeBaseAdapter(this, listeGroupes)
-        listView.adapter = adapter
-    }
-}
+        val adapter = GroupeAdapter(this, groupes)
+        lvGroupes.adapter = adapter
 
-// Custom ArrayAdapter
-class GroupeArrayAdapter(
-    context: Context,
-    private val liste: List<GroupeCMC>
-) : ArrayAdapter<GroupeCMC>(context, R.layout.item_groupe_cmc, liste) {
-
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val view = convertView ?: LayoutInflater.from(context).inflate(R.layout.item_groupe_cmc, parent, false)
-        val item = getItem(position)
-
-        if (item != null) {
-            val txtBadge = view.findViewById<TextView>(R.id.txtBadgeGroupe)
-            val txtNom = view.findViewById<TextView>(R.id.txtNomGroupe)
-            val txtFiliere = view.findViewById<TextView>(R.id.txtFiliereGroupe)
-            val txtInfo = view.findViewById<TextView>(R.id.txtInfoGroupe)
-            val txtEffectif = view.findViewById<TextView>(R.id.txtEffectifGroupe)
-
-            val prefix = item.code.substringAfter("CMC - ").take(3)
-            txtBadge.text = prefix
-            txtNom.text = item.code
-            txtFiliere.text = item.filiere
-            txtInfo.text = "${item.annee} • ${item.salle}"
-            txtEffectif.text = "${item.effectif} Stagiaires"
+        lvGroupes.setOnItemClickListener { _, _, position, _ ->
+            val groupe = adapter.getItem(position)
+            AlertDialog.Builder(this)
+                .setTitle(groupe.nom)
+                .setMessage("Effectif : ${groupe.effectif} stagiaires")
+                .setPositiveButton("OK", null)
+                .show()
         }
-        return view
-    }
-}
-
-// Custom BaseAdapter
-class GroupeBaseAdapter(
-    private val context: Context,
-    private val liste: List<GroupeCMC>
-) : BaseAdapter() {
-
-    override fun getCount(): Int = liste.size
-
-    override fun getItem(position: Int): Any = liste[position]
-
-    override fun getItemId(position: Int): Long = position.toLong()
-
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val view = convertView ?: LayoutInflater.from(context).inflate(R.layout.item_groupe_cmc, parent, false)
-        val item = liste[position]
-
-        val txtBadge = view.findViewById<TextView>(R.id.txtBadgeGroupe)
-        val txtNom = view.findViewById<TextView>(R.id.txtNomGroupe)
-        val txtFiliere = view.findViewById<TextView>(R.id.txtFiliereGroupe)
-        val txtInfo = view.findViewById<TextView>(R.id.txtInfoGroupe)
-        val txtEffectif = view.findViewById<TextView>(R.id.txtEffectifGroupe)
-
-        val prefix = item.code.substringAfter("CMC - ").take(3)
-        txtBadge.text = prefix
-        txtNom.text = item.code
-        txtFiliere.text = item.filiere
-        txtInfo.text = "${item.annee} • ${item.salle}"
-        txtEffectif.text = "${item.effectif} Stagiaires"
-
-        return view
     }
 }
