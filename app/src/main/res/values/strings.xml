@@ -26,6 +26,15 @@
     <!-- Pages de destination -->
     <string name="en_cours_developpement">Fonctionnalit\u00E9 en cours de d\u00E9veloppement</string>
 
+    <!-- Groupes CMC -->
+    <string name="titre_groupes_cmc">Groupes CMC</string>
+    <string name="subtitre_groupes_cmc">Cit\u00E9 des M\u00E9tiers et des Comp\u00E9tences</string>
+    <string name="instruction_groupes_cmc">S\u00E9lectionnez un groupe pour consulter les d\u00E9tails</string>
+    <string name="btn_array_adapter">ArrayAdapter</string>
+    <string name="btn_base_adapter">BaseAdapter</string>
+    <string name="mode_array_adapter">Mode actif : ArrayAdapter</string>
+    <string name="mode_base_adapter">Mode actif : BaseAdapter</string>
+
     <!-- Boites de dialogue et Toasts (TP03) -->
     <string name="toast_groupes">Groupes : s\u00E9lectionner ou consulter les groupes</string>
     <string name="toast_appel">Faire l\'appel : d\u00E9marrer une s\u00E9ance</string>
